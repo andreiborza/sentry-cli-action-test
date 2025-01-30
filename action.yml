@@ -1,0 +1,9 @@
+name: 'Sentry CLI action test'
+description: 'Sentry CLI hello world test'
+inputs:
+  event:
+    description: 'Event to send to Sentry'
+    required: true
+runs:
+  using: 'node20'
+  main: 'index.js'
