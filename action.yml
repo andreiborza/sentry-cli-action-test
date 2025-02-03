@@ -25,5 +25,5 @@ runs:
       shell: bash
 
     - name: Send test event
-      run: sentry-cli send-event -m ${{ inputs.event }}
+      run: sentry-cli send-event -m "${{ inputs.event }}"
       shell: bash
