@@ -20,11 +20,6 @@ runs:
         restore-keys: |
           ${{ runner.os }}-yarn-
 
-    - name: Check cache hit
-      run: |
-        echo "Cache hit: ${{ steps.yarn-cache.outputs.cache-hit }}"
-      shell: bash
-
     - name: Install Sentry CLI
       run: yarn add @sentry/cli
       working-directory: ${{ github.action_path }}
@@ -32,6 +27,6 @@ runs:
 
     - name: Sending event from node script
       env:
-        INPUT_SENTRY_MSG: ${{ inputs.sentry_msg }};
+        INPUTS: ${{ toJSON(inputs) }}
       run: node ${{ github.action_path }}/dist/index.js
       shell: bash
