@@ -1,0 +1,24 @@
+name: Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  test-action:
+    name: Test GitHub Action
+    runs-on: ubuntu-latest
+
+    steps:
+      - id: checkout
+        uses: actions/checkout@v4
+
+      - id: test-action
+        name: Test action
+        uses: ./
+        with:
+          sentry_msg: Message from CI tests
