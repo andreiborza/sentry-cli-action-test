@@ -28,4 +28,4 @@ jobs:
         env:
           SENTRY_DSN: "https://7e1cfdae24e683dd79e0723b80ba28d8@o447951.ingest.us.sentry.io/4508733014736896"
         with:
-          sentry_msg: Message from ${{ matrix.os }} CI tests
+          sentry_msg: Message from ${{ matrix.os }} CI test
