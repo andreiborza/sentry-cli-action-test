@@ -1,7 +1,7 @@
 name: 'Sentry CLI action test'
 description: 'Sentry CLI hello world test'
 inputs:
-  event:
+  sentry_msg:
     description: 'Event to send to Sentry'
     required: true
 runs:
@@ -31,5 +31,5 @@ runs:
       shell: bash
 
     - name: Sending event from node script
-      run: node ${{ github.action_path }}/index.js
+      run: node ${{ github.action_path }}/dist/index.js
       shell: bash
