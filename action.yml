@@ -21,7 +21,7 @@ runs:
           ${{ runner.os }}-yarn--
 
     - name: Install Sentry CLI
-      run: yarn install -g @sentry/cli
+      run: yarn global add @sentry/cli
       shell: bash
 
     - name: Send test event
