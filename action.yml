@@ -31,5 +31,7 @@ runs:
       shell: bash
 
     - name: Sending event from node script
+      with:
+        sentry_msg: ${{ inputs.sentry_msg }}
       run: node ${{ github.action_path }}/dist/index.js
       shell: bash
