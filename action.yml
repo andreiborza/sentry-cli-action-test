@@ -27,6 +27,6 @@ runs:
 
     - name: Sending event from node script
       env:
-        INPUTS: ${{ toJSON(inputs) }}
+        INPUT_SENTRY_MSG: ${{ inputs.sentry_msg }};
       run: node ${{ github.action_path }}/dist/index.js
       shell: bash
