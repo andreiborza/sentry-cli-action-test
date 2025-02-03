@@ -24,6 +24,6 @@ runs:
       run: yarn global add @sentry/cli
       shell: bash
 
-    - name: Send test event
-      run: sentry-cli send-event -m "${{ inputs.event }}"
+    - name: Sending event from node script
+      run: node index.js
       shell: bash
