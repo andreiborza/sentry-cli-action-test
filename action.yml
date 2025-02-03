@@ -33,5 +33,5 @@ runs:
     - name: Sending event from node script
       run: node ${{ github.action_path }}/dist/index.js
       env:
-        INPUTS: ${{ inputs }}
+        INPUTS: ${{ toJSON(inputs) }};
       shell: bash
