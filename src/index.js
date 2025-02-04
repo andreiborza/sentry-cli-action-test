@@ -4,7 +4,7 @@ import SentryCli from "@sentry/cli";
 try {
   const cli = new SentryCli()
   const sentryMsg = core.getInput('sentry_msg');
-  const cacheHit = core.getInput('cache_hit');
+  const cacheHit = process.env['CACHE_HIT'];
   console.log('Got cache hit: ', cacheHit)
 
   console.log(`Sending event to Sentry: ${sentryMsg}`)
