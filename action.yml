@@ -20,6 +20,10 @@ runs:
         restore-keys: |
           ${{ runner.os }}-yarn-
 
+    - name: Set cache hit var
+      run: echo "CACHE_HIT=${{ steps.yarn-cache.outputs.cache-hit }}" >> $GITHUB_OUTPUT
+      shell: bash
+
     - name: Install Sentry CLI
       run: yarn add @sentry/cli
       working-directory: ${{ github.action_path }}
