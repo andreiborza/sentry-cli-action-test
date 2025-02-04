@@ -1,0 +1,21 @@
+  # Releases always publish a `v[major].[minor].[patch]` tag
+  # This action creates/updates `v[major]` and `v[major].[minor]` tags
+  name: Create release tags
+  on:
+    release:
+      types: [released]
+
+  jobs:
+    create-tags:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+          with:
+            ref: ${{ github.event.release.tag_name }}
+
+        - name: Create and push major and minor tags
+          run: |
+            git tag -f -a $(echo "${{ github.event.release.tag_name }}" | cut -d. -f1)
+            git tag -f -a $(echo "${{ github.event.release.tag_name }}" | cut -d. -f1-2)
+            git push --follow-tags
+          shell: bash
