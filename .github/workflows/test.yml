@@ -9,26 +9,6 @@ on:
       - main
 
 jobs:
-  semver:
-    runs-on: ubuntu-latest
-    steps:
-      - id: checkout
-        uses: actions/checkout@v4
-
-      - name: Extract versions
-        id: version
-        run: |
-          TAG=${GITHUB_REF#refs/tags/}
-          echo "full_version=$TAG" >> $GITHUB_ENV
-          echo "major=$(echo $TAG | cut -d. -f1)" >> $GITHUB_ENV
-          echo "minor=$(echo $TAG | cut -d. -f1-2)" >> $GITHUB_ENV
-        shell: bash
-
-      - run: |
-          echo "$full_version"
-          echo "$major"
-          echo "$minor"
-
   test_matrix:
     strategy:
       matrix:
