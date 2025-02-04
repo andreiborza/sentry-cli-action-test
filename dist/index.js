@@ -47,6 +47,9 @@ const cli_namespaceObject = cli_x({ ["default"]: () => (__WEBPACK_EXTERNAL_MODUL
 try {
   const cli = new cli_namespaceObject["default"]()
   const sentryMsg = core_namespaceObject["default"].getInput('sentry_msg');
+  const cacheHit = core_namespaceObject["default"].getInput('cache_hit');
+  console.log('Got cache hit: ', cacheHit)
+
   console.log(`Sending event to Sentry: ${sentryMsg}`)
   cli.execute(['send-event', '-m', sentryMsg], true)
 } catch (error) {
