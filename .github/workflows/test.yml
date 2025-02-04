@@ -14,17 +14,13 @@ jobs:
     steps:
       - id: checkout
         uses: actions/checkout@v4
-        
+
       - name: Parse version from tag with custom fallback
         id: version
         uses: release-kit/semver@v2
         with:
           source: latest-tag
           fallback: 'v1.0.0' # v0.1.0 by default
-
-      - name: Parse version from tag
-        id: version
-        uses: release-kit/semver@v2
 
       - name: Use parsed version
         run: |
