@@ -24,6 +24,11 @@ jobs:
           echo "minor=$(echo $TAG | cut -d. -f1-2)" >> $GITHUB_ENV
         shell: bash
 
+      - run: |
+          echo "$full_version"
+          echo "$major"
+          echo "$minor"
+
   test_matrix:
     strategy:
       matrix:
