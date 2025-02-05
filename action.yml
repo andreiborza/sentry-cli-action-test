@@ -10,28 +10,8 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: echo "Running this action"
-      shell: bash
-
-    - name: Get yarn cache directory path
-      id: yarn-cache-dir-path
-      run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
-      shell: bash
-
-    - uses: actions/cache@v4
-      id: yarn-cache
-      with:
-        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
-
-    - name: Set cache hit var
-      run: echo "CACHE_HIT=${{ steps.yarn-cache.outputs.cache-hit }}" >> $GITHUB_ENV
-      shell: bash
-
     - name: Install Sentry CLI
-      run: yarn add @sentry/cli
+      run: yarn add --dev --no-lockfile @sentry/cli@2
       working-directory: ${{ github.action_path }}
       shell: bash
 
