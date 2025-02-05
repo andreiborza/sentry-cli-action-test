@@ -13,9 +13,23 @@
           with:
             ref: ${{ github.event.release.tag_name }}
 
-        - name: Create and push major and minor tags
+        - name: Set git user to getsentry-bot
           run: |
-            git tag -f -a $(echo "${{ github.event.release.tag_name }}" | cut -d. -f1)
-            git tag -f -a $(echo "${{ github.event.release.tag_name }}" | cut -d. -f1-2)
-            git push --follow-tags
+            echo "GIT_COMMITTER_NAME=andreiborza" >> $GITHUB_ENV;
+            echo "GIT_AUTHOR_NAME=andreiborza" >> $GITHUB_ENV;
+            echo "EMAIL=andrei.borza@sentry.io" >> $GITHUB_ENV;
+
+        - name: Extract major and minor versions
+          run: |
+            echo "MAJOR_VERSION=$(echo '${{ github.event.release.tag_name }}' | cut -d. -f1)" >> $GITHUB_ENV;
+            echo "MINOR_VERSION=$(echo '${{ github.event.release.tag_name }}' | cut -d. -f1-2)" >> $GITHUB_ENV;
+
+        - name: Create and push major and minor tags
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: |
+            git tag -f ${{ env.MAJOR_VERSION }}
+            git push -f origin ${{ env.MAJOR_VERSION }}
+            git tag -f ${{ env.MINOR_VERSION }}
+            git push -f origin ${{ env.MINOR_VERSION }}
           shell: bash
