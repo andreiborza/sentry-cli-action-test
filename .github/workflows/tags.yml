@@ -14,7 +14,7 @@
       steps:
         - run: |
             echo "TAG: ${{ github.event.release.tag_name }}"
-          
+
         - uses: actions/checkout@v4
           with:
             ref: ${{ github.event.release.tag_name }}
