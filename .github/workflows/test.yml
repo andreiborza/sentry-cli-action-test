@@ -51,4 +51,4 @@ jobs:
         uses: ./main
         with:
           environment: production
-          working_directory: ./test
+          working_directory: ../test
