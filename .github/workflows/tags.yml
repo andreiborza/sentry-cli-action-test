@@ -6,7 +6,7 @@
       types: [released]
 
   permissions:
-    actions: write
+    contents: write
 
   jobs:
     create-tags:
