@@ -46,6 +46,15 @@ const cli_namespaceObject = cli_x({ ["default"]: () => (__WEBPACK_EXTERNAL_MODUL
 
 try {
   const cli = new cli_namespaceObject["default"]()
+
+  const workingDirectory = core_namespaceObject["default"].getInput('working_directory')
+
+  const currentWorkingDirectory = process.cwd();
+  if (workingDirectory !== null && workingDirectory.length > 0) {
+    console.log('changed dir to', workingDirectory)
+    process.chdir(workingDirectory);
+  }
+
   const sentryMsg = core_namespaceObject["default"].getInput('sentry_msg');
   const cacheHit = process.env['CACHE_HIT'];
   console.log('Got cache hit: ', cacheHit)

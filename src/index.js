@@ -8,6 +8,7 @@ try {
 
   const currentWorkingDirectory = process.cwd();
   if (workingDirectory !== null && workingDirectory.length > 0) {
+    console.log('changed dir to', workingDirectory)
     process.chdir(workingDirectory);
   }
 
