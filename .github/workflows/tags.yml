@@ -12,9 +12,11 @@
     create-tags:
       runs-on: ubuntu-latest
       steps:
+        - run: |
+            echo "TAG: ${{ github.event.release.tag_name }}"
+          
         - uses: actions/checkout@v4
           with:
-            token: ${{ secrets.GITHUB_TOKEN }}
             ref: ${{ github.event.release.tag_name }}
 
         - name: Set git user to getsentry-bot
