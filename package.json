@@ -15,5 +15,8 @@
     "build": "ncc build src/index.js -e @sentry/cli -e @actions/core"
   },
   "keywords": [],
-  "author": ""
+  "author": "",
+  "devDependencies": {
+    "@sentry/cli": "^2.41.1"
+  }
 }
