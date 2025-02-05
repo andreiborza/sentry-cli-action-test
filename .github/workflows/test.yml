@@ -29,3 +29,26 @@ jobs:
           SENTRY_DSN: "https://7e1cfdae24e683dd79e0723b80ba28d8@o447951.ingest.us.sentry.io/4508733014736896"
         with:
           sentry_msg: Message from ${{ matrix.os }} CI test
+
+  mock-release-working-directory:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    runs-on: ${{ matrix.os }}
+    name: Mock a release in a different working directory
+    steps:
+      - name: Checkout directory we'll be running from
+        uses: actions/checkout@v4
+        with:
+          path: main/
+
+      - name: Checkout directory we'll be testing
+        uses: actions/checkout@v4
+        with:
+          path: test/
+
+      - name: Mock creating a Sentry release in a different directory
+        uses: ./main
+        with:
+          environment: production
+          working_directory: ../test

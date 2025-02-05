@@ -1,6 +1,7 @@
   # Releases always publish a `v[major].[minor].[patch]` tag
   # This action creates/updates `v[major]` and `v[major].[minor]` tags
   name: Create release tags
+
   on:
     release:
       types: [released]
