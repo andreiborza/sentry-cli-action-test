@@ -38,5 +38,5 @@ runs:
       env:
         INPUT_SENTRY_MSG: ${{ inputs.sentry_msg }}
         INPUT_WORKING_DIRECTORY: ${{ inputs.working_directory }}
-      run: node dist/index.js
+      run: yarn start
       shell: bash
